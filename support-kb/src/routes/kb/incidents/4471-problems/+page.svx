@@ -4,7 +4,7 @@ title: '#4471 · two problems, not one'
 owner: Lucas Fitzgerald
 status: draft
 reviewed: 2026-10-28
-signature: Lucas Fitzgerald
+signature: v1.eyJzdWIiOiI0NjA1IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyMzMxNTIsImV4cCI6MTc5MzMxOTU1Mn0.5W1pRRNwP8FPnnGRdUrB2YvYSaeFISGAyMhepOn1tW0
 ---
 
 <script>
@@ -41,5 +41,11 @@ the one-day-move footnotes as a third cause: those five reports are still `parse
 Triage matches on subject alone ([decision 0001](/kb/decisions/0001-dedupe-by-subject)). Same
 wording, different cause — still merged. Intake tags also disagree with the real cause often
 enough that a tag is not enough to split on.
+
+
+## Desk update · #4471 closed 05 Oct
+
+- **parser** fixed — `fix(dates): parse dd/mm for eu locales`
+- **hint** won't fix — booking-v3 form retired
 
 <RenderStamp {signature} />
