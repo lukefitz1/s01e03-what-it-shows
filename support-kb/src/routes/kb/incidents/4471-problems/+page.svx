@@ -1,0 +1,45 @@
+---
+layout: runbook
+title: '#4471 · two problems, not one'
+owner: Lucas Fitzgerald
+status: draft
+reviewed: 2026-10-28
+signature: Lucas Fitzgerald
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+Ticket **#4471** holds 412 unique reports about dates landing on the wrong day. The desk
+merged them as one known issue and queued one fix. The export’s own cause logic shows that is
+wrong: the reports are two different bugs that share a subject line.
+
+<Callout kind="warn">
+#4471 is not one problem. Subject-line dedupe put two causes in one ticket.
+</Callout>
+
+## What was merged
+
+<CauseTable ticket={4471} />
+
+## Problems to file
+
+1. **parser** — the shared parser reads every date month-first. Day-first tenants (app, email,
+   and booking-v2 forms) get month and day flipped. This is the majority of #4471.
+2. **hint** — booking-v3 prints `MM/DD/YYYY` under the date field, so people type month-first,
+   while the form still reads the tenant’s day-first locale. That is a different bug. It has no
+   ticket of its own.
+
+Each cause needs its own ticket, with the report count the table computes above. Do not treat
+the one-day-move footnotes as a third cause: those five reports are still `parser` by tenant.
+
+## Why the merge happened
+
+Triage matches on subject alone ([decision 0001](/kb/decisions/0001-dedupe-by-subject)). Same
+wording, different cause — still merged. Intake tags also disagree with the real cause often
+enough that a tag is not enough to split on.
+
+<RenderStamp {signature} />
